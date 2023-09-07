@@ -4,13 +4,22 @@
 #include <mpi.h>
 
 
-double SumArray(int* data, int size) {
+double SumArray(int* data, long int size) {
     double sum = 0.0;
     for (int i = 0; i < size; ++i) {
         sum += data[i];
     }
     return sum;
 }
+
+double DotProduct(int* data, long int size) {
+    double product = 0.0;
+    for (int i = 0; i < size; ++i) {
+        product += data[i] * data[i];
+    }
+    return product;
+}
+
 
 int main(int argc, char** argv) {
 
@@ -21,10 +30,11 @@ int main(int argc, char** argv) {
     int rank, size;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
+    std::cout << "Process with rank " << rank << " started." << std::endl;
 
-    const int N = 8;  // Number of times to repeat the whole computation
-    const int M = 8;   // Number of times to repeat the inner computation
-    const int arraySize = 1000000;  // Size of the array for computation
+    const int N = 10;  // Number of times to repeat the whole computation
+    const int M = 100;   // Number of times to repeat the inner computation
+    const long int arraySize = 10000000000;  // Size of the array for computation
 
     int* dataArray = new int[arraySize];
 
@@ -45,7 +55,8 @@ int main(int argc, char** argv) {
             double startTime = MPI_Wtime();
 
             // Perform the computation
-            double result = SumArray(dataArray, arraySize);
+            //double result = SumArray(dataArray, arraySize);
+            double result2 = DotProduct(dataArray, arraySize);
 
             double endTime = MPI_Wtime();
             double elapsedTime = endTime - startTime;
@@ -54,9 +65,9 @@ int main(int argc, char** argv) {
 
         double averageInnerTime = totalInnerTime / M;
         totalOuterTime += averageInnerTime;
-        if (rank == 0) {
-            std::cout << "Average time for " << M << " iterations: " << averageInnerTime << " seconds." << std::endl;
-        }
+        //if (rank == 0) {
+        //    std::cout << "Average time for " << M << " iterations: " << averageInnerTime << " seconds." << std::endl;
+        //}
     }
 
     // Calculate and print average of averages time

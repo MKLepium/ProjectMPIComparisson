@@ -31,7 +31,20 @@ all: $(EXECUTABLE)
 $(EXECUTABLE): $(SRC)
 	$(MPICXX) $(CXXFLAGS) -o $@ $<
 
+run_openmpi: $(EXECUTABLE)
+	echo $(EXECUTABLE)
+	mpirun.openmpi -np 4 ./$(EXECUTABLE)
+
+run_mpich: $(EXECUTABLE)
+	echo $(EXECUTABLE)
+	mpirun.mpich -np 4 ./$(EXECUTABLE)
+
+run_both:
+	make MPI_IMPL=OPENMPI run_openmpi
+	make MPI_IMPL=MPICH run_mpich
+	make clean
+
 clean:
-	rm -f $(EXECUTABLE)
+	rm -f *.out
 
 .PHONY: all clean
