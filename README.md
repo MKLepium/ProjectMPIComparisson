@@ -2,7 +2,7 @@
 
 TODO: Add the results of the comparison.
 
-# How to build Build
+## How to build Build
 
 To build using the openMPI library, run:
 
@@ -15,3 +15,18 @@ To build using the MPICH library, run:
 ```bash
 make  MPI_IMPL=MPICH
 ```
+
+## How to run
+
+To run the program, run:
+
+```bash
+mpiexec -n 4 ./[Name of the executable]
+```
+
+## Prerequisites
+
+- C++ compiler
+- OpenMPI and MPICH libraries
+- mpiexec
+- make
