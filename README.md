@@ -1,6 +1,8 @@
 # This is a little C++ example to compare the performance of different MPI libraries.
 
-# ## Build
+TODO: Add the results of the comparison.
+
+# How to build Build
 
 To build using the openMPI library, run:
 
