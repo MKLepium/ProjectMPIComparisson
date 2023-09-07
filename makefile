@@ -1,5 +1,5 @@
 # Default MPI implementation (OPENMPI or MPICH)
-MPI_IMPL ?= MPICH
+MPI_IMPL ?= OPENMPI
 # Change to MPICH to use MPICH
 # change to OPENMPI to use OpenMPI
 
@@ -7,11 +7,11 @@ EXECUTABLE_SUFFIX = 0
 # MPI compiler
 ifeq ($(MPI_IMPL),OPENMPI)
   MPICXX = mpicxx.openmpi
-  EXECUTABLE_SUFFIX = openmpi
+  EXECUTABLE_SUFFIX = openmpi.out
   
 else ifeq ($(MPI_IMPL),MPICH)
   MPICXX = mpicxx.mpich
-  EXECUTABLE_SUFFIX = mpich
+  EXECUTABLE_SUFFIX = mpich.out
 else
   $(error MPI_IMPL must be either OPENMPI or MPICH)
 endif

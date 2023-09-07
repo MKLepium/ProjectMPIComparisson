@@ -17,17 +17,6 @@ int main(int argc, char** argv) {
 
     MPI_Init(&argc, &argv);
 
-    // compile with "mpicxx -o mpi_example_dunno mpi_example.cpp "
-
-/*
-    int major_version, minor_version;
-    char mpi_version[MPI_MAX_LIBRARY_VERSION_STRING];
-
-    MPI_Get_library_version(mpi_version, MPI_MAX_LIBRARY_VERSION_STRING);
-    MPI_Get_version(&major_version, &minor_version);
-
-    printf("MPI Library Version: %s\n", mpi_version);
-*/
 
     int rank, size;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
