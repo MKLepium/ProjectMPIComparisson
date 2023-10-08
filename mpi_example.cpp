@@ -3,6 +3,8 @@
 #include <ctime>
 #include <mpi.h>
 #include <math.h>
+#define RED_TEXT "\033[1;31m"
+#define RESET_COLOR "\033[0m"
 
 
 double Sum2SqrtArray(int* data, long int size) {
@@ -23,7 +25,7 @@ int main(int argc, char** argv) {
     int rank, size;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
-    std::cout << "Process with rank " << rank << " started." << std::endl;
+    //std::cout << "Process with rank " << rank << " started." << std::endl;
 
     const int N = 10;  // Number of times to repeat the whole computation
     const int M = 10;   // Number of times to repeat the inner computation
@@ -59,24 +61,27 @@ int main(int argc, char** argv) {
 
         double averageInnerTime = totalInnerTime / M;
         totalOuterTime += averageInnerTime;
-        if (rank == 0) {
+        /*if (rank == 0) {
             // print average for openmp
             #ifdef OMPI_MPI_H
             std::cout << "OPENMPI: Average time for " << M << " iterations: " << averageInnerTime << " seconds." << std::endl;
             #else
             std::cout << "MPICH: Average time for " << M << " iterations: " << averageInnerTime << " seconds." << std::endl;
             #endif
-        }
+        }*/
     }
 
     // Calculate and print average of averages time
     double averageOuterTime = totalOuterTime / N;
     if (rank == 0) {
+        std::cout << RED_TEXT << std::endl;
         #ifdef OMPI_MPI_H
-        std::cout << "OPENMPI: Average time for " << M*N << " iterations: " << averageOuterTime << " seconds." << std::endl;
+        std::cout << "OPENMPI: " << "Size: " << size << ": Average time for " << M*N << " iterations: " << averageOuterTime << " seconds." << std::endl;
         #else
-        std::cout << "MPICH: Average time for " << M*N << " iterations: " << averageOuterTime << " seconds." << std::endl;
+        std::cout << "MPICH: " << "Size: " << size << ": Average time for " << M*N << " iterations: " << averageOuterTime << " seconds." << std::endl;
         #endif
+        // Reset color to default
+        std::cout << RESET_COLOR << std::endl;
     }
 
     delete[] dataArray;

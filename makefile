@@ -5,6 +5,7 @@ MPI_IMPL ?= OPENMPI
 
 EXECUTABLE_SUFFIX = 0
 # MPI compiler
+N = 4
 ifeq ($(MPI_IMPL),OPENMPI)
   MPICXX = mpicxx.openmpi
   EXECUTABLE_SUFFIX = openmpi.out
@@ -32,17 +33,32 @@ $(EXECUTABLE): $(SRC)
 	$(MPICXX) $(CXXFLAGS) -o $@ $<
 
 run_openmpi: $(EXECUTABLE)
-	echo $(EXECUTABLE)
-	mpirun.openmpi -np 4 ./$(EXECUTABLE)
+#	echo $(EXECUTABLE) 
+#	echo $(N)
+	mpirun.openmpi -np $(N) ./$(EXECUTABLE)
 
 run_mpich: $(EXECUTABLE)
-	echo $(EXECUTABLE)
-	mpirun.mpich -np 4 ./$(EXECUTABLE)
+#	echo $(EXECUTABLE)
+#	echo $(N)
+	mpirun.mpich -np $(N) ./$(EXECUTABLE)
 
 run_both:
 	make MPI_IMPL=OPENMPI run_openmpi
 	make MPI_IMPL=MPICH run_mpich
 	make clean
+
+run_both_with_different_n:
+	make N=1 MPI_IMPL=OPENMPI run_openmpi
+	make N=1 MPI_IMPL=MPICH run_mpich
+	make clean
+	make N=4 MPI_IMPL=OPENMPI run_openmpi
+	make N=4 MPI_IMPL=MPICH run_mpich
+	make clean
+	make N=8 MPI_IMPL=OPENMPI run_openmpi
+	make N=8 MPI_IMPL=MPICH run_mpich
+	make clean
+
+
 
 clean:
 	rm -f *.out
