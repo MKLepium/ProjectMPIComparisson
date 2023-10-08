@@ -19,7 +19,7 @@ endif
 
 # Compiler and flags
 
-CXXFLAGS = -O2 -Wall
+CXXFLAGS = -O3 -Wall
 
 # Source file and output executable
 SRC = mpi_example.cpp

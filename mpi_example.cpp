@@ -2,22 +2,15 @@
 #include <cstdlib>
 #include <ctime>
 #include <mpi.h>
+#include <math.h>
 
 
-double SumArray(int* data, long int size) {
+double Sum2SqrtArray(int* data, long int size) {
     double sum = 0.0;
     for (int i = 0; i < size; ++i) {
-        sum += data[i];
+        sum += sqrt(data[i]) + sqrt(data[i]);
     }
     return sum;
-}
-
-double DotProduct(int* data, long int size) {
-    double product = 0.0;
-    for (int i = 0; i < size; ++i) {
-        product += data[i] * data[i];
-    }
-    return product;
 }
 
 
@@ -33,8 +26,8 @@ int main(int argc, char** argv) {
     std::cout << "Process with rank " << rank << " started." << std::endl;
 
     const int N = 10;  // Number of times to repeat the whole computation
-    const int M = 100;   // Number of times to repeat the inner computation
-    const long int arraySize = 10000000000;  // Size of the array for computation
+    const int M = 10;   // Number of times to repeat the inner computation
+    const long int arraySize = 100000000;  // Size of the array for computation
 
     int* dataArray = new int[arraySize];
 
@@ -55,8 +48,9 @@ int main(int argc, char** argv) {
             double startTime = MPI_Wtime();
 
             // Perform the computation
-            //double result = SumArray(dataArray, arraySize);
-            double result2 = DotProduct(dataArray, arraySize);
+            double result = Sum2SqrtArray(dataArray, arraySize);
+
+            //double result2 = DotProduct(dataArray, arraySize);
 
             double endTime = MPI_Wtime();
             double elapsedTime = endTime - startTime;
@@ -65,15 +59,24 @@ int main(int argc, char** argv) {
 
         double averageInnerTime = totalInnerTime / M;
         totalOuterTime += averageInnerTime;
-        //if (rank == 0) {
-        //    std::cout << "Average time for " << M << " iterations: " << averageInnerTime << " seconds." << std::endl;
-        //}
+        if (rank == 0) {
+            // print average for openmp
+            #ifdef OMPI_MPI_H
+            std::cout << "OPENMPI: Average time for " << M << " iterations: " << averageInnerTime << " seconds." << std::endl;
+            #else
+            std::cout << "MPICH: Average time for " << M << " iterations: " << averageInnerTime << " seconds." << std::endl;
+            #endif
+        }
     }
 
     // Calculate and print average of averages time
     double averageOuterTime = totalOuterTime / N;
     if (rank == 0) {
-        std::cout << "Average of averages time for " << N << " iterations: " << averageOuterTime << " seconds." << std::endl;
+        #ifdef OMPI_MPI_H
+        std::cout << "OPENMPI: Average time for " << M*N << " iterations: " << averageOuterTime << " seconds." << std::endl;
+        #else
+        std::cout << "MPICH: Average time for " << M*N << " iterations: " << averageOuterTime << " seconds." << std::endl;
+        #endif
     }
 
     delete[] dataArray;
