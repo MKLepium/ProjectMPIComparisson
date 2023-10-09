@@ -48,16 +48,27 @@ run_both:
 	make clean
 
 run_both_with_different_n:
-	make N=1 MPI_IMPL=OPENMPI run_openmpi
-	make N=1 MPI_IMPL=MPICH run_mpich
 	make clean
-	make N=4 MPI_IMPL=OPENMPI run_openmpi
-	make N=4 MPI_IMPL=MPICH run_mpich
-	make clean
-	make N=8 MPI_IMPL=OPENMPI run_openmpi
 	make N=8 MPI_IMPL=MPICH run_mpich
 	make clean
-
+	make N=8 MPI_IMPL=OPENMPI run_openmpi
+	make clean
+	make N=6 MPI_IMPL=MPICH run_mpich
+	make clean
+	make N=6 MPI_IMPL=OPENMPI run_openmpi
+	make clean
+	make N=4 MPI_IMPL=MPICH run_mpich
+	make clean
+	make N=4 MPI_IMPL=OPENMPI run_openmpi
+	make clean
+	make N=2 MPI_IMPL=MPICH run_mpich
+	make clean
+	make N=2 MPI_IMPL=OPENMPI run_openmpi
+	make clean
+	make N=1 MPI_IMPL=MPICH run_mpich
+	make clean
+	make N=1 MPI_IMPL=OPENMPI run_openmpi
+	make clean
 
 
 clean:

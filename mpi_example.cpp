@@ -9,12 +9,21 @@
 
 double Sum2SqrtArray(int* data, long int size) {
     double sum = 0.0;
+    #pragma omp parallel for reduction(+:sum)
     for (int i = 0; i < size; ++i) {
         sum += sqrt(data[i]) + sqrt(data[i]);
     }
     return sum;
 }
 
+double SumCosPlusSinArray(int* data, long int size) {
+    double sum = 0.0;
+    #pragma omp parallel for reduction(+:sum)
+    for (int i = 0; i < size; ++i) {
+        sum += cos(data[i]) + sin(data[i]);
+    }
+    return sum;
+}
 
 int main(int argc, char** argv) {
 
@@ -29,7 +38,7 @@ int main(int argc, char** argv) {
 
     const int N = 10;  // Number of times to repeat the whole computation
     const int M = 10;   // Number of times to repeat the inner computation
-    const long int arraySize = 100000000;  // Size of the array for computation
+    const long int arraySize = 10000000;  // Size of the array for computation
 
     int* dataArray = new int[arraySize];
 
@@ -52,7 +61,7 @@ int main(int argc, char** argv) {
             // Perform the computation
             double result = Sum2SqrtArray(dataArray, arraySize);
 
-            //double result2 = DotProduct(dataArray, arraySize);
+            //double result2 = SumCosPlusSinArray(dataArray, arraySize);
 
             double endTime = MPI_Wtime();
             double elapsedTime = endTime - startTime;
