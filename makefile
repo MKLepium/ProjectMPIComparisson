@@ -9,13 +9,30 @@ N = 4
 ifeq ($(MPI_IMPL),OPENMPI)
   MPICXX = mpicxx.openmpi
   EXECUTABLE_SUFFIX = openmpi.out
+  MPIRUN = mpirun.openmpi
   
 else ifeq ($(MPI_IMPL),MPICH)
   MPICXX = mpicxx.mpich
   EXECUTABLE_SUFFIX = mpich.out
+  MPIRUN = mpirun.mpich
 else
   $(error MPI_IMPL must be either OPENMPI or MPICH)
 endif
+
+
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S),Darwin) # for Mac OS X and openmpi
+	ifeq ($(MPI_IMPL),OPENMPI)
+		MPICXX = /opt/homebrew/opt/open-mpi/bin/mpicxx
+		MPIRUN = /opt/homebrew/opt/open-mpi/bin/mpirun
+	endif
+	ifeq ($(MPI_IMPL),MPICH)
+		MPICXX = /opt/homebrew/opt/mpich/bin/mpicxx
+		MPIRUN = /opt/homebrew/opt/mpich/bin/mpirun
+	endif
+endif
+
 
 
 # Compiler and flags
@@ -30,17 +47,23 @@ EXECUTABLE = my_mpi_program$(EXECUTABLE_SUFFIX)
 all: $(EXECUTABLE)
 
 $(EXECUTABLE): $(SRC)
+	echo $(MPICXX)
 	$(MPICXX) $(CXXFLAGS) -o $@ $<
 
 run_openmpi: $(EXECUTABLE)
-#	echo $(EXECUTABLE) 
-#	echo $(N)
-	mpirun.openmpi -np $(N) ./$(EXECUTABLE)
+	echo $(MPIRUN)
+	echo $(N)
+	echo $(EXECUTABLE)
+	echo $(MPICXX)
+	$(MPIRUN) -np $(N) ./$(EXECUTABLE)
 
 run_mpich: $(EXECUTABLE)
-#	echo $(EXECUTABLE)
-#	echo $(N)
-	mpirun.mpich -np $(N) ./$(EXECUTABLE)
+	echo $(MPIRUN)
+	echo $(N)
+	echo $(EXECUTABLE)
+	echo $(MPICXX)
+	
+	$(MPIRUN) -np $(N) ./$(EXECUTABLE)
 
 run_both:
 	make MPI_IMPL=OPENMPI run_openmpi
