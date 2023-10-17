@@ -37,7 +37,7 @@ endif
 
 # Compiler and flags
 
-CXXFLAGS = -O3 -Wall
+CXXFLAGS = -O0 -Wall
 
 # Source file and output executable
 SRC = mpi_example.cpp
@@ -62,7 +62,6 @@ run_mpich: $(EXECUTABLE)
 	echo $(N)
 	echo $(EXECUTABLE)
 	echo $(MPICXX)
-	
 	$(MPIRUN) -np $(N) ./$(EXECUTABLE)
 
 run_both:
@@ -93,6 +92,23 @@ run_both_with_different_n:
 	make N=1 MPI_IMPL=OPENMPI run_openmpi
 	make clean
 
+run_openmpi_with_different_n:
+	make clean
+	make N=8 MPI_IMPL=OPENMPI run_openmpi
+    make N=6 MPI_IMPL=OPENMPI run_openmpi
+	make N=4 MPI_IMPL=OPENMPI run_openmpi
+	make N=2 MPI_IMPL=OPENMPI run_openmpi
+	make N=1 MPI_IMPL=OPENMPI run_openmpi
+	make clean
+
+run_mpich_with_different_n:
+	make clean
+	make N=8 MPI_IMPL=MPICH run_mpich
+	make N=6 MPI_IMPL=MPICH run_mpich
+	make N=4 MPI_IMPL=MPICH run_mpich
+	make N=2 MPI_IMPL=MPICH run_mpich
+	make N=1 MPI_IMPL=MPICH run_mpich
+	make clean
 
 clean:
 	rm -f *.out
