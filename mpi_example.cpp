@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
             // Perform the computation
             double result = Sum2SqrtArray(dataArray, arraySize);
 
-            //double result2 = SumCosPlusSinArray(dataArray, arraySize);
+            double result2 = SumCosPlusSinArray(dataArray, arraySize);
 
             double endTime = MPI_Wtime();
             double elapsedTime = endTime - startTime;
