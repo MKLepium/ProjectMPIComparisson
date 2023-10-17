@@ -60,8 +60,10 @@ int main(int argc, char** argv) {
 
             // Perform the computation
             double result = Sum2SqrtArray(dataArray, arraySize);
+            __asm__ volatile("" : : "g"(result) : "memory");
 
             double result2 = SumCosPlusSinArray(dataArray, arraySize);
+            __asm__ volatile("" : : "g"(result2) : "memory");
 
             double endTime = MPI_Wtime();
             double elapsedTime = endTime - startTime;
