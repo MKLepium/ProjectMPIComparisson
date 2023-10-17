@@ -95,19 +95,29 @@ run_both_with_different_n:
 run_openmpi_with_different_n:
 	make clean
 	make N=8 MPI_IMPL=OPENMPI run_openmpi
+	echo "openmpi: done with 8"
 	make N=6 MPI_IMPL=OPENMPI run_openmpi
+	echo "openmpi: done with 6"
 	make N=4 MPI_IMPL=OPENMPI run_openmpi
+	echo "openmpi: done with 4"
 	make N=2 MPI_IMPL=OPENMPI run_openmpi
+	echo "openmpi: done with 2"
 	make N=1 MPI_IMPL=OPENMPI run_openmpi
+	echo "openmpi: done with 1"
 	make clean
 
 run_mpich_with_different_n:
 	make clean
 	make N=8 MPI_IMPL=MPICH run_mpich
+	echo "mpich: done with 8"
 	make N=6 MPI_IMPL=MPICH run_mpich
+	echo "mpich: done with 6"
 	make N=4 MPI_IMPL=MPICH run_mpich
+	echo "mpich: done with 4"
 	make N=2 MPI_IMPL=MPICH run_mpich
+	echo "mpich:done with 2"
 	make N=1 MPI_IMPL=MPICH run_mpich
+	echo "mpich: done with 1"
 	make clean
 
 clean:
