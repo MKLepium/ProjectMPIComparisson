@@ -37,7 +37,7 @@ endif
 
 # Compiler and flags
 
-CXXFLAGS = -O0 -Wall
+CXXFLAGS = -O3 -Wall -fopenmp
 
 # Source file and output executable
 SRC = mpi_example.cpp
