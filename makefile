@@ -95,7 +95,7 @@ run_both_with_different_n:
 run_openmpi_with_different_n:
 	make clean
 	make N=8 MPI_IMPL=OPENMPI run_openmpi
-    make N=6 MPI_IMPL=OPENMPI run_openmpi
+	make N=6 MPI_IMPL=OPENMPI run_openmpi
 	make N=4 MPI_IMPL=OPENMPI run_openmpi
 	make N=2 MPI_IMPL=OPENMPI run_openmpi
 	make N=1 MPI_IMPL=OPENMPI run_openmpi
@@ -113,4 +113,4 @@ run_mpich_with_different_n:
 clean:
 	rm -f *.out
 
-.PHONY: all clean
+.PHONY: all clean run_openmpi run_mpich run_both run_both_with_different_n run_openmpi_with_different_n run_mpich_with_different_n
