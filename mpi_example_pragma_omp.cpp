@@ -5,75 +5,21 @@
 #include <math.h>
 
 double Sum2SqrtArray(int* data, long int size) {
-    double local_sum = 0.0;
     double sum = 0.0;
-
-    // Determine the rank and size of the MPI communicator
-    int rank, comm_size;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &comm_size);
-
-    // Calculate the chunk size for each process
-    int chunk_size = size / comm_size;
-    //int start = rank * chunk_size;
-    // The last process may need to do more work if the total size is not divisible by the number of processes
-    //int end = (rank == comm_size - 1) ? size : start + chunk_size;
-
-    // Allocate memory for the local data
-    int* local_data = (int*)malloc(chunk_size * sizeof(int));
-
-    // Scatter the data to all processes
-    MPI_Scatter(&data[0], chunk_size, MPI_INT, local_data, chunk_size, MPI_INT, 0, MPI_COMM_WORLD);
-
-    // Calculate the local sum for the assigned chunk
-    for (int i = 0; i < chunk_size; ++i) {
-        // Perform the computation on local data
-        local_sum += sqrt(sqrt(local_data[i]) + sqrt(local_data[i]));
+    #pragma omp parallel for reduction(+:sum)
+    for (int i = 0; i < size; ++i) {
+        sum += sqrt(sqrt(data[i]) + sqrt(data[i]));
     }
-
-    // Reduce local sums to obtain the final sum
-    MPI_Reduce(&local_sum, &sum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-
-    // Free the allocated memory
-    free(local_data);
-
     return sum;
 }
 
 // There is lots of boilerplate code in here.
 double SumCosPlusSinArray(int* data, long int size) {
-    double local_sum = 0.0;
     double sum = 0.0;
-
-    // Determine the rank and size of the MPI communicator
-    int rank, comm_size;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &comm_size);
-
-    // Calculate the chunk size for each process
-    int chunk_size = size / comm_size;
-    //int start = rank * chunk_size;
-    // The last process may need to do more work if the total size is not divisible by the number of processes
-    //int end = (rank == comm_size - 1) ? size : start + chunk_size;
-
-    // Allocate memory for the local data
-    int* local_data = (int*)malloc(chunk_size * sizeof(int));
-
-    // Scatter the data to all processes
-    MPI_Scatter(&data[0], chunk_size, MPI_INT, local_data, chunk_size, MPI_INT, 0, MPI_COMM_WORLD);
-
-    // Calculate the local sum for the assigned chunk
-    for (int i = 0; i < chunk_size; ++i) {
-        // Perform the computation on local data
-        local_sum += cos(local_data[i]) + sin(local_data[i]);
+    #pragma omp parallel for reduction(+:sum)
+    for (int i = 0; i < size; ++i) {
+        sum += cos(data[i]) + sin(data[i]);
     }
-
-    // Reduce local sums to obtain the final sum
-    MPI_Reduce(&local_sum, &sum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-
-    // Free the allocated memory
-    free(local_data);
-
     return sum;
 }
 
