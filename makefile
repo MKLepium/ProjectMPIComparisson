@@ -51,21 +51,23 @@ $(EXECUTABLE): $(SRC)
 	$(MPICXX) $(CXXFLAGS) -o $@ $<
 
 run_openmpi: $(EXECUTABLE)
-	echo $(MPIRUN)
-	echo $(N)
-	echo $(EXECUTABLE)
-	echo $(MPICXX)
+#	echo $(MPIRUN)
+#	echo $(N)
+#	echo $(EXECUTABLE)
+#	echo $(MPICXX)
 	$(MPIRUN) -np $(N) ./$(EXECUTABLE)
 
 run_mpich: $(EXECUTABLE)
-	echo $(MPIRUN)
-	echo $(N)
-	echo $(EXECUTABLE)
-	echo $(MPICXX)
+#	echo $(MPIRUN)
+#	echo $(N)
+#	echo $(EXECUTABLE)
+#	echo $(MPICXX)
 	$(MPIRUN) -np $(N) ./$(EXECUTABLE)
 
 run_both:
+	make clean
 	make MPI_IMPL=OPENMPI run_openmpi
+	make clean
 	make MPI_IMPL=MPICH run_mpich
 	make clean
 

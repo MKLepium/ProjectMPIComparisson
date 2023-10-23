@@ -1,0 +1,88 @@
+
+Optimisation Level = 3
+OPENMPI: Size: 8: Average time for 100 iterations: 0.121611 seconds.
+OPENMPI: Size: 6: Average time for 100 iterations: 0.147576 seconds.
+OPENMPI: Size: 4: Average time for 100 iterations: 0.205773 seconds.
+OPENMPI: Size: 2: Average time for 100 iterations: 0.380658 seconds.
+OPENMPI: Size: 1: Average time for 100 iterations: 0.733291 seconds.
+
+Optimisation Level = 2
+OPENMPI: Size: 8: Average time for 100 iterations: 0.118869 seconds.
+OPENMPI: Size: 6: Average time for 100 iterations: 0.146102 seconds.
+OPENMPI: Size: 4: Average time for 100 iterations: 0.206213 seconds.
+OPENMPI: Size: 2: Average time for 100 iterations: 0.379691 seconds.
+OPENMPI: Size: 1: Average time for 100 iterations: 0.730339 seconds.
+
+Optimisation Level = 1
+OPENMPI: Size: 8: Average time for 100 iterations: 0.1193 seconds.
+OPENMPI: Size: 6: Average time for 100 iterations: 0.147777 seconds.
+OPENMPI: Size: 4: Average time for 100 iterations: 0.206561 seconds.
+OPENMPI: Size: 2: Average time for 100 iterations: 0.382622 seconds.
+OPENMPI: Size: 1: Average time for 100 iterations: 0.735614 seconds.
+
+Optimisation Level = 0
+OPENMPI: Size: 8: Average time for 100 iterations: 0.341295 seconds.
+OPENMPI: Size: 6: Average time for 100 iterations: 0.479457 seconds.
+OPENMPI: Size: 4: Average time for 100 iterations: 0.73091 seconds.
+OPENMPI: Size: 2: Average time for 100 iterations: 1.40789 seconds.
+OPENMPI: Size: 1: Average time for 100 iterations: 2.58251 seconds.
+
+==== MPICH ====
+
+Optimisation Level = 3
+MPICH: Size: 8: Average time for 100 iterations: 0.128611 seconds.
+MPICH: Size: 6: Average time for 100 iterations: 0.155155 seconds.
+MPICH: Size: 4: Average time for 100 iterations: 0.208084 seconds.
+MPICH: Size: 2: Average time for 100 iterations: 0.377216 seconds.
+MPICH: Size: 1: Average time for 100 iterations: 0.735425 seconds.
+
+Optimisation Level = 2
+MPICH: Size: 8: Average time for 100 iterations: 0.128437 seconds.
+MPICH: Size: 6: Average time for 100 iterations: 0.155436 seconds.
+MPICH: Size: 4: Average time for 100 iterations: 0.211073 seconds.
+MPICH: Size: 2: Average time for 100 iterations: 0.37825 seconds.
+MPICH: Size: 1: Average time for 100 iterations: 0.730973 seconds.
+
+Optimisation Level = 1
+MPICH: Size: 8: Average time for 100 iterations: 0.128439 seconds.
+MPICH: Size: 6: Average time for 100 iterations: 0.151687 seconds.
+MPICH: Size: 4: Average time for 100 iterations: 0.208396 seconds.
+MPICH: Size: 2: Average time for 100 iterations: 0.37891 seconds.
+MPICH: Size: 1: Average time for 100 iterations: 0.73552 seconds.
+
+Optimisation Level = 0
+MPICH: Size: 8: Average time for 100 iterations: 0.361513 seconds.
+MPICH: Size: 6: Average time for 100 iterations: 0.489144 seconds.
+MPICH: Size: 4: Average time for 100 iterations: 0.737059 seconds.
+MPICH: Size: 2: Average time for 100 iterations: 1.48617 seconds.
+MPICH: Size: 1: Average time for 100 iterations: 2.99873 seconds.
+
+==== OPENMPI WITH PRAGMA OMP ====
+
+Optimisation level = 3
+OPENMPI_MOD: Size: 8: Average time for 100 iterations: 0.704932 seconds.
+OPENMPI_MOD: Size: 6: Average time for 100 iterations: 0.533273 seconds.
+OPENMPI_MOD: Size: 4: Average time for 100 iterations: 0.3644 seconds.
+OPENMPI_MOD: Size: 2: Average time for 100 iterations: 0.402169 seconds.
+OPENMPI_MOD: Size: 1: Average time for 100 iterations: 0.380907 seconds.
+
+Optimisation level = 2
+OPENMPI_MOD: Size: 8: Average time for 100 iterations: 0.711318 seconds.
+OPENMPI_MOD: Size: 6: Average time for 100 iterations: 0.550789 seconds.
+OPENMPI_MOD: Size: 4: Average time for 100 iterations: 0.349833 seconds.
+OPENMPI_MOD: Size: 2: Average time for 100 iterations: 0.394626 seconds.
+OPENMPI_MOD: Size: 1: Average time for 100 iterations: 0.375094 seconds.
+
+Optimisation level = 1
+OPENMPI_MOD: Size: 8: Average time for 100 iterations: 0.692902 seconds.
+OPENMPI_MOD: Size: 6: Average time for 100 iterations: 0.521957 seconds.
+OPENMPI_MOD: Size: 4: Average time for 100 iterations: 0.352196 seconds.
+OPENMPI_MOD: Size: 2: Average time for 100 iterations: 0.395667 seconds.
+OPENMPI_MOD: Size: 1: Average time for 100 iterations: 0.377679 seconds.
+
+Optimisation level = 0
+OPENMPI_MOD: Size: 8: Average time for 100 iterations: 1.43077 seconds.
+OPENMPI_MOD: Size: 6: Average time for 100 iterations: 1.07892 seconds.
+OPENMPI_MOD: Size: 4: Average time for 100 iterations: 0.726431 seconds.
+OPENMPI_MOD: Size: 2: Average time for 100 iterations: 1.43597 seconds.
+OPENMPI_MOD: Size: 1: Average time for 100 iterations: 1.40689 seconds.
