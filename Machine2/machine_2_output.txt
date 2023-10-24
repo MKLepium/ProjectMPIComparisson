@@ -1,0 +1,48 @@
+File: ./machine1_mpich_opt0.txt
+MPICH: Size: 4: Average time for 100 iterations: 0.388059 seconds.
+MPICH: Size: 2: Average time for 100 iterations: 0.705503 seconds.
+MPICH: Size: 1: Average time for 100 iterations: 1.42259 seconds.
+File: ./machine1_mpich_opt1.txt
+MPICH: Size: 4: Average time for 100 iterations: 0.202198 seconds.
+MPICH: Size: 2: Average time for 100 iterations: 0.379565 seconds.
+MPICH: Size: 1: Average time for 100 iterations: 0.775509 seconds.
+File: ./machine1_mpich_opt2.txt
+MPICH: Size: 4: Average time for 100 iterations: 0.203659 seconds.
+MPICH: Size: 2: Average time for 100 iterations: 0.379737 seconds.
+MPICH: Size: 1: Average time for 100 iterations: 0.774625 seconds.
+File: ./machine1_mpich_opt3.txt
+MPICH: Size: 4: Average time for 100 iterations: 0.204272 seconds.
+MPICH: Size: 2: Average time for 100 iterations: 0.377125 seconds.
+MPICH: Size: 1: Average time for 100 iterations: 0.773906 seconds.
+File: ./machine1_openmpi_opt0.txt
+OPENMPI: Size: 4: Average time for 100 iterations: 0.374437 seconds.
+OPENMPI: Size: 2: Average time for 100 iterations: 0.705056 seconds.
+OPENMPI: Size: 1: Average time for 100 iterations: 1.42311 seconds.
+File: ./machine1_openmpi_opt1.txt
+OPENMPI: Size: 4: Average time for 100 iterations: 0.201744 seconds.
+OPENMPI: Size: 2: Average time for 100 iterations: 0.377494 seconds.
+OPENMPI: Size: 1: Average time for 100 iterations: 0.776446 seconds.
+File: ./machine1_openmpi_opt2.txt
+OPENMPI: Size: 4: Average time for 100 iterations: 0.202091 seconds.
+OPENMPI: Size: 2: Average time for 100 iterations: 0.377682 seconds.
+OPENMPI: Size: 1: Average time for 100 iterations: 0.774762 seconds.
+File: ./machine1_openmpi_opt3.txt
+OPENMPI: Size: 4: Average time for 100 iterations: 0.201513 seconds.
+OPENMPI: Size: 2: Average time for 100 iterations: 0.379412 seconds.
+OPENMPI: Size: 1: Average time for 100 iterations: 0.781223 seconds.
+File: ./machine1_openmpi_pragma_opt0.txt
+OPENMPI: Size: 4: Average time for 100 iterations: 1.03388 seconds.
+OPENMPI: Size: 2: Average time for 100 iterations: 0.909127 seconds.
+OPENMPI: Size: 1: Average time for 100 iterations: 0.905047 seconds.
+File: ./machine1_openmpi_pragma_opt1.txt
+OPENMPI: Size: 4: Average time for 100 iterations: 0.611565 seconds.
+OPENMPI: Size: 2: Average time for 100 iterations: 0.519263 seconds.
+OPENMPI: Size: 1: Average time for 100 iterations: 0.516208 seconds.
+File: ./machine1_openmpi_pragma_opt2.txt
+OPENMPI: Size: 4: Average time for 100 iterations: 0.608584 seconds.
+OPENMPI: Size: 2: Average time for 100 iterations: 0.504099 seconds.
+OPENMPI: Size: 1: Average time for 100 iterations: 0.500066 seconds.
+File: ./machine1_openmpi_pragma_opt3.txt
+OPENMPI: Size: 4: Average time for 100 iterations: 0.603105 seconds.
+OPENMPI: Size: 2: Average time for 100 iterations: 0.502826 seconds.
+OPENMPI: Size: 1: Average time for 100 iterations: 0.500568 seconds.
